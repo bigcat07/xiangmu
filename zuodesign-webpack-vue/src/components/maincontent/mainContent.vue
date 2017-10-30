@@ -23,7 +23,7 @@
     </div>
     <!--评论-->
     <div id="discuss">
-        <p>
+        <p v-if="this.usernameArr.length > 0">
           {{this.usernameArr[index].author.username}}:
           <span>{{this.usernameArr[index].text}}</span>
         </p>
@@ -33,7 +33,6 @@
 
 <script>
     import axios from 'axios'
-    window.setInterval()
     export default {
         name: '',
         data () {
@@ -55,7 +54,6 @@
               _that.people = res.data.topic.collect_count
               _that.reply = res.data.topic.comment_count
               _that.usernameArr = res.data.topic.comments
-              console.log(_that.usernameArr)
             }
           )
         }

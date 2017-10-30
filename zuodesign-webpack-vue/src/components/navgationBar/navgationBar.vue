@@ -11,14 +11,17 @@
         <!--中间内容-->
         <div id="nav-title">
           <ul>
-            <li>
-              <a href="#">首页</a>
-            </li>
-            <li>
-              <a href="#">深度</a>
-            </li>
-            <li>
-              <a href="#">下载APP</a>
+            <!--<li>-->
+              <!--<a href="index.html" :style="[this.bgcolor,this.beforebg]" @click="panduan(isa)">首页</a>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<a href="deep.html" :style="[this.bgcolor,this.beforebg]" @click="panduan(isa)">深度</a>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<a href="#" :style="[this.bgcolor,this.beforebg]" @click="panduan(isa)">下载APP</a>-->
+            <!--</li>-->
+            <li v-for="(v,i) in titlearray">
+              <a href="" @click="tiaozhuan(i)" class="headline">{{v}}</a>
             </li>
           </ul>
           <div id="nav-search">
@@ -168,19 +171,38 @@
 </template>
 
 <script>
+    var headline = document.getElementsByClassName('headline')
     export default {
         name: '',
         data () {
           return {
             isShow : true,
-            istablogin : true,
+            istablogin : false,
             istabregister:false,
-            ismask : true,
+            ismask : false,
             issecurity : false,
-            isPassword : false
+            isPassword : false,
+            titlearray : [
+              '首页','深度','下载APP'
+            ]
           }
         },
         methods:{
+          tiaozhuan:function (i) {
+            switch (i) {
+              case 0:
+                headline[0].style.color = 'white'
+                headline[0].href = 'index.html'
+                break;
+              case 1:
+                headline[1].style.color = 'white'
+                headline[1].href = 'deep.html'
+                break;
+              case 2:
+                headline[2].style.color = 'white'
+                break;
+            }
+          },
           isChecked:function () {
             if(this.$refs.jiancha.checked) {
                 this.$refs.register.removeAttribute('disabled')
@@ -271,9 +293,9 @@
     font-size: 14px;
   }
   /*鼠标链接*/
-  #nav-title>ul>li:nth-child(1)>a {
-    color: white;
-  }
+  /*#nav-title>ul>li:nth-child(1)>a {*/
+    /*color: white;*/
+  /*}*/
   #nav-search {
     display: inline-block;
     position: relative;
