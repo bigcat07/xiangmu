@@ -38,6 +38,7 @@
 
 <style scoped>
   @import "../../common/style/marx.min.css";
+
   #main {
     width: 880px;
     margin: auto;

@@ -38,7 +38,8 @@ module.exports = {
         headers: {
           Host:'www.zuodesign.cn'
         }
-      }
+      },
+
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

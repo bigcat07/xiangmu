@@ -11,17 +11,11 @@
         <!--中间内容-->
         <div id="nav-title">
           <ul>
-            <!--<li>-->
-              <!--<a href="index.html" :style="[this.bgcolor,this.beforebg]" @click="panduan(isa)">首页</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="deep.html" :style="[this.bgcolor,this.beforebg]" @click="panduan(isa)">深度</a>-->
-            <!--</li>-->
-            <!--<li>-->
-              <!--<a href="#" :style="[this.bgcolor,this.beforebg]" @click="panduan(isa)">下载APP</a>-->
+            <!--<li v-for="(v,i) in titlearray">-->
+              <!--<a href="" @click.prevent="setCur(i)" :class="{headline:v.iscur}">{{v.name}}</a>-->
             <!--</li>-->
             <li v-for="(v,i) in titlearray">
-              <a href="" @click="tiaozhuan(i)" class="headline">{{v}}</a>
+              <a href="" @click="tiaozhuan(i)" class="headline">{{v.name}}</a>
             </li>
           </ul>
           <div id="nav-search">
@@ -183,23 +177,44 @@
             issecurity : false,
             isPassword : false,
             titlearray : [
-              '首页','深度','下载APP'
-            ]
+              {name:'首页',iscur:true},
+              {name:'深度',iscur:false},
+              {name:'下载APP',iscur:false}
+            ],
+            iscur:0
           }
         },
         methods:{
+//          setCur:function (index) {
+////            this.titlearray.map(function (v,index) {
+////              index==i? v.iscur=true:v.iscur=false
+////            })
+//            for (var i = 0;i<this.titlearray.length;i++) {
+//                if (i == index) {
+//                  this.titlearray[i].iscur=true
+//                }else {
+//                  this.titlearray[i].iscur=false
+//                }
+//            }
+//          },
           tiaozhuan:function (i) {
             switch (i) {
               case 0:
                 headline[0].style.color = 'white'
+                headline[1].style.color = 'darkgray'
+                headline[2].style.color = 'darkgray'
                 headline[0].href = 'index.html'
                 break;
               case 1:
                 headline[1].style.color = 'white'
-                headline[1].href = 'deep.html'
+                headline[0].style.color = 'darkgray'
+                headline[2].style.color = 'darkgray'
+                headline[1].href = 'deep.html?i=1'
                 break;
               case 2:
                 headline[2].style.color = 'white'
+                headline[1].style.color = 'darkgray'
+                headline[0].style.color = 'darkgray'
                 break;
             }
           },
