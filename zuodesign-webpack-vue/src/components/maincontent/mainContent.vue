@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="background">
     <div id="topic">
       <div id="mask">
         <a href="#"></a>
@@ -24,8 +24,11 @@
     <!--评论-->
     <div id="discuss">
         <p v-if="this.usernameArr.length > 0">
-          {{this.usernameArr[index].author.username}}:
-          <span>{{this.usernameArr[index].text}}</span>
+          <a href="#">
+            {{this.usernameArr[index].author.username}}:
+            <span>{{this.usernameArr[index].text}}</span>
+          </a>
+
         </p>
     </div>
   </div>
@@ -45,8 +48,17 @@
             index:0,
           }
         },
+        methods:{
+
+        },
         mounted() {
           var _that = this;
+          setInterval(function () {
+            _that.index++
+            if (_that.index == 5) {
+              _that.index = 0
+            }
+          },4000)
           axios.get('api/topics').then(
             function (res) {
               _that.topic = res.data.topic.title
@@ -126,5 +138,24 @@
   }
   #headline>a>img {
     width: 20px;
+  }
+  #discuss {
+    width: 540px;
+    height: 80px;
+    background-color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  #discuss>p>a {
+    font-size: 13px;
+    color: #262D2F;
+    word-wrap : break-word;
+  }
+  #discuss a {
+    text-decoration: none;
+  }
+  #discuss>p>a>span {
+    font-size: 13px;
+    color: #999A9A;
   }
 </style>

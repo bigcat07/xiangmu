@@ -1,14 +1,15 @@
 <template>
-  <div>
+  <div id="background">
     <NavgationBar></NavgationBar>
     <div id="main">
       <div id="left-content">
-        <mainContent></mainContent>
-        <webHot></webHot>
+        <MainContent></MainContent>
+        <WebHot></WebHot>
+        <HotPosts></HotPosts>
       </div>
       <div id="right-content">
-        <hotRecommend></hotRecommend>
-        <reCommend></reCommend>
+        <HotRecommend></HotRecommend>
+        <ReCommend></ReCommend>
       </div>
     </div>
 
@@ -19,26 +20,30 @@
 <script>
   import MyIndex from '../../components/index/Index'
   import NavgationBar from '../../components/navgationBar/navgationBar.vue'
-  import mainContent from '../../components/maincontent/mainContent.vue'
-  import hotRecommend from '../../components/hotrecommend/hotRecommend.vue'
-  import reCommend from '../../components/recommend/reCommend.vue'
-  import webHot from '../../components/webhot/webhot.vue'
+  import MainContent from '../../components/maincontent/mainContent.vue'
+  import HotRecommend from '../../components/hotrecommend/hotRecommend.vue'
+  import ReCommend from '../../components/recommend/reCommend.vue'
+  import WebHot from '../../components/webhot/webhot.vue'
+  import HotPosts from '../../components/hotPosts/hotPosts.vue'
   export default {
     name: 'index',
     components: {
         MyIndex,
         NavgationBar,
-        mainContent,
-        webHot,
-        hotRecommend,
-        reCommend
+        MainContent,
+        WebHot,
+        HotRecommend,
+        ReCommend,
+        HotPosts
     }
   }
 </script>
 
 <style scoped>
   @import "../../common/style/marx.min.css";
-
+  #background {
+    background-color: rgb(245,245,245);
+  }
   #main {
     width: 880px;
     margin: auto;

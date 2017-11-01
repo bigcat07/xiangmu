@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="background">
     <h4>推荐阅读</h4>
     <div id="title">
       <div v-for="(k,i) in this.titleArray" class="title-content" @mouseenter="over(i)" @mouseleave="out(i)">
@@ -91,10 +91,13 @@
 </script>
 
 <style scoped>
+  #background {
+    background-color: rgb(245,245,245);
+    padding-top: 20px;
+  }
   h4 {
     width: 100px;
     margin: auto;
-    margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;
     font-weight: 600;

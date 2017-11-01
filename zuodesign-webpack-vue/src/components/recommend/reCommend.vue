@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div id="mask" v-if="ismask" @click="noMask"></div>
+    <div id="app" @click="showApp" v-if="isApp">
+      <img src="../../assets/scan.png" alt="">
+    </div>
     <p>推荐关注</p>
     <div>
         <div v-for="(val, i) in this.alljson" class="recommend" key="{val}">
@@ -23,13 +27,13 @@
     <!--下方练习方式-->
     <div id="information">
       <div id="offical">
-        <p class="text">下载IOS版 App</p>
+        <p class="text" @click="showMask">下载IOS版 App</p>
         <div class="logo">
           <img src="../../assets/woodpecker1.png" alt="">
         </div>
       </div>
       <div id="wechat">
-        <p class="text">关注微信公众号</p>
+        <p class="text" @click="showMask">关注微信公众号</p>
         <div class="logo">
           <img src="../../assets/weixinPublic.png" alt="">
         </div>
@@ -49,7 +53,9 @@
             content : [],
             imgArr : [],
             dis : false,
-            alljson: []
+            alljson: [],
+            ismask:false,
+            isApp:false
           }
         },
         methods : {
@@ -66,6 +72,18 @@
           },
           link : function () {
             window.open('http://www.baidu.com','_self')
+          },
+          showMask:function () {
+            this.ismask = true
+            this.isApp = true
+          },
+          noMask:function () {
+            this.ismask = false
+            this.isApp = false
+          },
+          showApp:function () {
+            this.ismask = false
+            this.isApp = false
           }
         },
         mounted () {
@@ -121,6 +139,26 @@
 </script>
 
 <style scoped>
+  #mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: black;
+    opacity: 0.8;
+  }
+  #app {
+    width: 440px;
+    height: 440px;
+    position: absolute;
+    left: 50%;
+    margin-left: -220px;
+  }
+  #app>img {
+    width: 100%;
+    height: 100%;
+  }
   .recommend {
     position: relative;
     border-bottom: 1px solid darkgray;

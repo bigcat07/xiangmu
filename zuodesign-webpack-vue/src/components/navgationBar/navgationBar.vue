@@ -11,12 +11,18 @@
         <!--中间内容-->
         <div id="nav-title">
           <ul>
-            <!--<li v-for="(v,i) in titlearray">-->
-              <!--<a href="" @click.prevent="setCur(i)" :class="{headline:v.iscur}">{{v.name}}</a>-->
-            <!--</li>-->
-            <li v-for="(v,i) in titlearray">
-              <a href="" @click="tiaozhuan(i)" class="headline">{{v.name}}</a>
+            <li>
+              <a href="index.html">首页</a>
             </li>
+            <li>
+              <a href="deep.html">深度</a>
+            </li>
+            <li @click="reveal">
+              <span style="color: #9DA0A4;font-size: 14px;cursor: pointer">下载APP</span>
+            </li>
+            <!--<li v-for="(v,i) in titlearray">-->
+              <!--<a href="" @click="tiaozhuan(i)" class="headline">{{v.name}}</a>-->
+            <!--</li>-->
           </ul>
           <div id="nav-search">
             <input type="text" placeholder="请输入关键字搜索">
@@ -51,7 +57,7 @@
     </div>
 
     <!--登录注册蒙版-->
-    <div id="mask" v-show="ismask">
+    <div id="mask" v-show="ismask" @click="maskcontrol">
 
     </div>
     <!--登录-->
@@ -120,6 +126,10 @@
       <button class="lrbtn" type="button" ref="register" >注册账号</button>
       <div class="close" @click="closemask">X</div>
     </div>
+    <!--下载APP-->
+    <div id="app" @click="scan" v-show="isApp">
+      <img src="../../assets/scan.png" alt="">
+    </div>
     <!--手机验证码登录-->
     <div class="lore" v-show="issecurity">
       <p>
@@ -181,42 +191,24 @@
               {name:'深度',iscur:false},
               {name:'下载APP',iscur:false}
             ],
-            iscur:0
+            iscur:0,
+            isApp:false
           }
         },
         methods:{
-//          setCur:function (index) {
-////            this.titlearray.map(function (v,index) {
-////              index==i? v.iscur=true:v.iscur=false
-////            })
-//            for (var i = 0;i<this.titlearray.length;i++) {
-//                if (i == index) {
-//                  this.titlearray[i].iscur=true
-//                }else {
-//                  this.titlearray[i].iscur=false
-//                }
-//            }
-//          },
-          tiaozhuan:function (i) {
-            switch (i) {
-              case 0:
-                headline[0].style.color = 'white'
-                headline[1].style.color = 'darkgray'
-                headline[2].style.color = 'darkgray'
-                headline[0].href = 'index.html'
-                break;
-              case 1:
-                headline[1].style.color = 'white'
-                headline[0].style.color = 'darkgray'
-                headline[2].style.color = 'darkgray'
-                headline[1].href = 'deep.html?i=1'
-                break;
-              case 2:
-                headline[2].style.color = 'white'
-                headline[1].style.color = 'darkgray'
-                headline[0].style.color = 'darkgray'
-                break;
-            }
+//          下载app
+          reveal:function () {
+            this.ismask = true
+            this.isApp = true
+          },
+          scan:function () {
+            this.isApp = false
+            this.ismask = false
+          },
+//         控制蒙版
+          maskcontrol:function () {
+            this.ismask = false
+            this.isApp = false
           },
           isChecked:function () {
             if(this.$refs.jiancha.checked) {
@@ -406,8 +398,17 @@
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 20;
   }
-
+  /*下载APP*/
+  #app {
+    width: 570px;
+    height: 570px;
+    position: absolute;
+    left: 50%;
+    margin-left: -235px;
+    z-index: 80;
+  }
   /*登录*/
  .lore {
     position: absolute;

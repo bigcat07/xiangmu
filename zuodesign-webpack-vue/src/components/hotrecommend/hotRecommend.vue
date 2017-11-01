@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="background">
       <div id="hottags">
         <p>热门标签</p>
         <a href="" v-for="value in this.nameArr">{{value}}</a>
@@ -23,7 +23,6 @@
               for (var i = 0;i<res.data.hot_tags.length;i++) {
                 _that.nameArr.push(res.data.hot_tags[i].content)
               }
-              console.log(_that.nameArr)
             }
           )
         }
@@ -31,6 +30,9 @@
 </script>
 
 <style scoped>
+  #background {
+    background-color: rgb(245,245,245);
+  }
   #hottags {
     width: 250px;
   }

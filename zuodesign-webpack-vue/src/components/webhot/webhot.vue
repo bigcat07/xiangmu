@@ -1,9 +1,10 @@
 <template>
   <div>
     <div id="nav">
-      <div id="title">
-        <img src="../../assets/soduku.png" alt="">
-        <span>全部</span>
+      <div id="title" @click="isShow = !isShow">
+        <img src="../../assets/soduku.png" alt="" v-if="imgAppear">
+        <div class="lgtitle" :style="{backgroundColor:bgcolor}" v-if="divAppear">&nbsp;&nbsp;</div>
+        <span v-text="content"></span>
       </div>
       <div id="project">
         <div id="project-good" @click.prevent.stop="good">
@@ -24,12 +25,16 @@
     <div id="downlist" v-show="isShow">
       <div id="up"></div>
       <ul id="list">
-          <li id="all" @mouseenter="bgColor" @mouseleave="outbgColor">
-            <img :src="box" alt="">
-            全部
+          <li id="all" @mouseenter.stop="bgColor" @mouseleave.stop="outbgColor">
+            <div @mouseenter.stop="overSrc" @mouseleave.stop="outSrc" @click="restore">
+              <img :src="box" alt="">
+              全部
+            </div>
+
           </li>
           <li v-for="(value,index) in typeArr"
-              @mouseenter="over(index)" class="texttyple" @mouseleave="out(index)">
+              @mouseenter="over(index)" class="texttyple" @mouseleave="out(index)"
+              @click="transfer(index)">
             <span :style="{'backgroundColor':value.color}">&nbsp&nbsp</span>
             {{value.type}}
           </li>
@@ -43,42 +48,63 @@
     import projectBad from '../../assets/check-box1.png'
     import projectNone from '../../assets/check-box_click.png'
     import soduku from '../../assets/soduku.png'
+    import gary from '../../assets/gary.png'
     var text = document.getElementsByClassName('texttyple')
+    var tfgood = true
+    var tfbad = true
+
     export default {
         name: '',
         data () {
           return {
             goodSrc:projectGood,
             badSrc:projectBad,
-            box:soduku,
-            isShow:true,
+            box:gary,
+            isShow:false,
             isbgcolor:false,
             typeArr:[
-              {color:'red',type:'日用'},
-              {color:'yellow',type:'公共'},
-              {color:'blue',type:'关爱'},
-              {color:'black',type:'家居'},
-              {color:'pink',type:'时尚'},
-              {color:'orange',type:'美食'},
-              {color:'purple',type:'数码'},
-              {color:'red',type:'视觉'},
-              {color:'yellow',type:'空间'}
-            ]
+              {color:'#E9CAAC',type:'日用'},
+              {color:'#96E459',type:'公共'},
+              {color:'#FF384C',type:'关爱'},
+              {color:'#600019',type:'家居'},
+              {color:'#B516F8',type:'时尚'},
+              {color:'#FF902F',type:'美食'},
+              {color:'#008D7D',type:'数码'},
+              {color:'#FFE746',type:'视觉'},
+              {color:'#00C2EF',type:'空间'}
+            ],
+            content:'全部',
+            bgcolor:'',
+            imgAppear:true,
+            divAppear:false,
+
           }
         },
         methods: {
           good:function () {
+            if (!tfbad) {
+              alert('请至少选择一种类型的设计!')
+              return false
+            }
             if (this.goodSrc == projectGood) {
               this.goodSrc = projectNone
+              tfgood = false
             }else {
               this.goodSrc = projectGood
+              tfgood = true
             }
           },
           bad:function () {
+            if (!tfgood) {
+              alert('请至少选择一种类型的设计!')
+              return false
+            }
             if (this.badSrc == projectBad) {
               this.badSrc = projectNone
+              tfbad = false
             }else {
               this.badSrc = projectBad
+              tfbad = true
             }
           },
           over:function (i) {
@@ -92,6 +118,25 @@
           },
           outbgColor:function (ev) {
             ev.target.style.backgroundColor = 'rgb(255,255,255)'
+          },
+          overSrc:function () {
+            this.box = soduku
+          },
+          outSrc:function () {
+            this.box = gary
+          },
+          transfer:function (i) {
+            this.imgAppear = false
+            this.divAppear = true
+            this.content = this.typeArr[i].type
+            this.bgcolor = this.typeArr[i].color
+            this.isShow = false
+          },
+          restore:function () {
+            this.content = '全部'
+            this.imgAppear = true
+            this.divAppear = false
+            this.isShow = false
           }
         }
     }
@@ -99,11 +144,13 @@
 
 <style scoped>
   #nav {
+    margin-top: 20px;
     overflow: hidden;
   }
   #title {
     font-size: 14px;
     width: 70px;
+    height: 25px;
     background: url("../../assets/down.png") 53px 4px no-repeat;
     cursor: pointer;
     position: relative;
@@ -155,11 +202,11 @@
     height: 0;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-bottom: 11px solid red;
+    border-bottom: 11px solid #FFFFFF;
     left: 42px;
   }
   /*全部*/
-  #all>img {
+  #all>div>img {
     display: inline-block;
     vertical-align: middle;
     margin-top: -4px;
@@ -170,6 +217,7 @@
     border: 1px solid darkgray;
     top: 11px;
     border-radius: 4px;
+    background-color: white;
   }
   #list>li {
     width: 80px;
@@ -191,5 +239,11 @@
     vertical-align: middle;
     margin-top: -5px;
     margin-right: 4px;
+  }
+  .lgtitle {
+    width: 8px;
+    height:8px;
+    border-radius: 50%;
+    margin-top: 4px;
   }
 </style>
