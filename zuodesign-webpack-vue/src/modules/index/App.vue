@@ -12,7 +12,7 @@
         <ReCommend></ReCommend>
       </div>
     </div>
-
+    <Footer></Footer>
   </div>
 
 </template>
@@ -25,6 +25,7 @@
   import ReCommend from '../../components/recommend/reCommend.vue'
   import WebHot from '../../components/webhot/webhot.vue'
   import HotPosts from '../../components/hotPosts/hotPosts.vue'
+  import Footer from '../../components/footer/footer.vue'
   export default {
     name: 'index',
     components: {
@@ -34,7 +35,8 @@
         WebHot,
         HotRecommend,
         ReCommend,
-        HotPosts
+        HotPosts,
+        Footer
     }
   }
 </script>

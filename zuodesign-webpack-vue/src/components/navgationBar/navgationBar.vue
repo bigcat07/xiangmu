@@ -209,6 +209,10 @@
           maskcontrol:function () {
             this.ismask = false
             this.isApp = false
+            this.issecurity = false
+            this.isPassword = false
+            this.istabregister = false
+            this.istablogin = false
           },
           isChecked:function () {
             if(this.$refs.jiancha.checked) {
@@ -398,7 +402,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 20;
+    z-index: 30;
   }
   /*下载APP*/
   #app {

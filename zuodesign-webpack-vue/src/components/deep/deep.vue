@@ -40,13 +40,13 @@
 <script>
     import axios from 'axios'
     var mask = document.getElementsByClassName('masktop')
-    function getparam() {
-      var c1 = window.location.href.split('?')[1];
-      var c2 = c1.split('=')[1]
-      return c2
-    }
-    var c = getparam()
-    console.log(c)
+//    function getparam() {
+//      var c1 = window.location.href.split('?')[1];
+//      var c2 = c1.split('=')[1]
+//      return c2
+//    }
+//    var c = getparam()
+//    console.log(c)
 
 
     export default {
@@ -125,7 +125,7 @@
     height: 460px;
     border-radius: 6px;
     background-color: black;
-    z-index: 10;
+    z-index: 5;
     opacity: 0.2;
   }
   /*第二层蒙版*/
@@ -137,7 +137,7 @@
     height: 460px;
     border-radius: 6px;
     background-color: black;
-    z-index: 15;
+    z-index: 10;
     opacity: 0.4;
     display: none;
     cursor: pointer;
@@ -155,7 +155,7 @@
     width: 240px;
     left: 50%;
     margin-left: -120px;
-    z-index: 50;
+    z-index: 20;
   }
   .title>a {
     text-decoration: none;
@@ -171,13 +171,13 @@
     bottom: 60px;
     left: 50%;
     margin-left: -120px;
-    z-index: 50;
+    z-index: 20;
   }
   .subtitle>a {
     text-decoration: none;
     color: rgb(226,226,226);
     font-size: 14px;
-    z-index: 50;
+    z-index: 20;
   }
   /*分割线*/
   .line {
@@ -188,14 +188,14 @@
     left: 50%;
     margin-left: -140px;
     bottom: 30px;
-    z-index: 50;
+    z-index: 20;
   }
   /*类型*/
   .tagname {
     position: absolute;
     left: 20px;
     bottom: 10px;
-    z-index: 50;
+    z-index: 20;
   }
   .tagname>a {
     color: rgb(208,208,208);
@@ -203,7 +203,7 @@
     vertical-align: middle;
     font-size: 14px;
     font-weight: 500;
-    z-index: 50;
+    z-index: 20;
   }
   /*小球*/
   .ball {
@@ -212,19 +212,19 @@
     height: 8px;
     border-radius: 50%;
     margin-right: 8px;
-    z-index: 50;
+    z-index: 20;
   }
   .time {
     position: absolute;
     left: 190px;
     bottom: 10px;
     width: 160px;
-    z-index: 50;
+    z-index: 20;
   }
   .time>a {
     text-decoration: none;
     color: white;
     font-size: 13px;
-    z-index: 50;
+    z-index: 20;
   }
 </style>

@@ -147,6 +147,7 @@
     top: 0;
     background-color: black;
     opacity: 0.8;
+    z-index: 20;
   }
   #app {
     width: 440px;
@@ -154,6 +155,7 @@
     position: absolute;
     left: 50%;
     margin-left: -220px;
+    z-index: 30;
   }
   #app>img {
     width: 100%;
