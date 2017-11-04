@@ -40,13 +40,7 @@
 <script>
     import axios from 'axios'
     var mask = document.getElementsByClassName('masktop')
-//    function getparam() {
-//      var c1 = window.location.href.split('?')[1];
-//      var c2 = c1.split('=')[1]
-//      return c2
-//    }
-//    var c = getparam()
-//    console.log(c)
+
 
 
     export default {

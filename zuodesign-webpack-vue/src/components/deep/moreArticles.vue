@@ -20,11 +20,6 @@
         </div>
       </div>
     </div>
-    <div id="anchorPoint">
-      <a href="#nav">
-        <img src="../../assets/up.png" alt="">
-      </a>
-    </div>
   </div>
 </template>
 
@@ -44,6 +39,9 @@
           },
           out:function (i) {
             articles[i].style.boxShadow = '0px,0px,0px #F6F6F6'
+          },
+          hao:function () {
+            this.$emit('ab')
           }
         },
         mounted () {
@@ -119,18 +117,4 @@
     font-size: 12px;
   }
   /*锚点*/
-  #anchorPoint {
-    position: fixed;
-    right: 50px;
-    bottom: 100px;
-    width: 40px;
-    height: 40px;
-    background-color: #A3A6A6;
-    border-radius: 4px;
-    padding-top: 10px;
-    cursor: pointer;
-  }
-  #anchorPoint>a {
-   margin-left: 12px;
-  }
 </style>

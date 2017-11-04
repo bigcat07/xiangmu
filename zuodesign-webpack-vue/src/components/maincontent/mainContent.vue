@@ -2,7 +2,7 @@
   <div id="background">
     <div id="topic">
       <div id="mask">
-        <a href="#"></a>
+        <a href="topic.html"></a>
       </div>
       <p id="topic-title">话题</p>
       <p id="line"></p>
@@ -26,7 +26,7 @@
         <p v-if="this.usernameArr.length > 0">
           <a href="#">
             {{this.usernameArr[index].author.username}}:
-            <span>{{this.usernameArr[index].text}}</span>
+            <span v-html="usernameArr[index].text"></span>
           </a>
 
         </p>

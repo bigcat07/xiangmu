@@ -1,22 +1,28 @@
 <template>
   <div>
+    <transition name="fade">
     <div id="mask" v-if="isShow" @click="dbmask"></div>
+    </transition>
+
     <!--关注微信号-->
+    <transition name="fade">
     <div id="wechat" v-if="isSrc" @click="dbsrc">
       <img src="../../assets/scan-wechat.png" alt="">
     </div>
+    </transition>
     <!--意见反馈-->
-    <div id="feedback">
+    <div id="feedback" v-if="tickling">
       <p>意见反馈</p>
       <div>
         <textarea placeholder="你有啥想ZUO的,快告诉我们呀~~"></textarea>
+        <button type="button">提交反馈</button>
       </div>
     </div>
     <div id="footer">
         <div id="about">
             <span @click="showmask">关注公众号</span>
-          <a href="">关于ZUO</a>
-            <span>反馈吐槽</span>
+          <a href="http://zuodesign.cn/about">关于ZUO</a>
+            <span @click="tease">反馈吐槽</span>
         </div>
         <p>上海设慧网络科技有限公司2016版权所有&nbsp;&nbsp;&nbsp;沪ICP备15013372号</p>
     </div>
@@ -29,13 +35,15 @@
         data () {
           return {
             isShow:false,
-            isSrc:false
+            isSrc:false,
+            tickling:false
           }
         },
         methods:{
           dbmask:function () {
             this.isShow = false
             this.isSrc = false
+            this.tickling = false
           },
           dbsrc:function () {
             this.isShow = false
@@ -44,6 +52,10 @@
           showmask:function () {
             this.isShow = true
             this.isSrc = true
+          },
+          tease:function () {
+            this.isShow = true
+            this.tickling = true
           }
         }
     }
@@ -93,7 +105,7 @@
   #wechat {
     width: 440px;
     height: 440px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     margin-left: -220px;
     z-index: 13;
@@ -106,12 +118,13 @@
     border-radius: 4px;
   }
   #feedback {
-    position: absolute;
+    position: fixed;
     width: 540px;
     left: 50%;
     margin-left: -270px;
     top: 50%;
     margin-top: -270px;
+    z-index: 12;
   }
   #feedback>p {
     height: 74px;
@@ -140,5 +153,21 @@
     font-size: 14px;
     padding: 10px;
     background-color: #F6F6F6;
+  }
+  button {
+    width: 488px;
+    height: 50px;
+    background-color: #00DAE0;
+    text-align: center;
+    line-height:30px;
+    margin-left: 26px;
+    outline: none;
+    margin-top: 20px;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0
   }
 </style>

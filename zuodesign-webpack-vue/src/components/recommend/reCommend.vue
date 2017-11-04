@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <!--下方练习方式-->
+    <!--下方联系方式-->
     <div id="information">
       <div id="offical">
         <p class="text" @click="showMask">下载IOS版 App</p>
@@ -152,9 +152,11 @@
   #app {
     width: 440px;
     height: 440px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     margin-left: -220px;
+    top: 50%;
+    margin-top: -220px;
     z-index: 30;
   }
   #app>img {

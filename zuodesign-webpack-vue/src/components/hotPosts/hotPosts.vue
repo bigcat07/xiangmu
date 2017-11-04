@@ -26,8 +26,12 @@
         <div class="praise"
              :style="{left:(v.haloCenterRatio.width_ratio*100)+'%',
            top:(v.haloCenterRatio.height_ratio*100)+'%'}">
-              <p>赞同</p>
-              <span>这个态度</span>
+              <p v-if="isApproved">赞同</p>
+              <span v-if="isApproved">这个态度</span>
+        </div>
+        <div class="outer" :style="{left:(v.haloCenterRatio.width_ratio*100)+'%',
+           top:(v.haloCenterRatio.height_ratio*100)+'%'}">
+
         </div>
       </div>
       <img :src="v.postImage.url" alt="" class="picture-img">
@@ -115,6 +119,7 @@
     import axios from 'axios'
     var textareas = document.getElementsByClassName('textarea')
     var masks = document.getElementsByClassName('picture')
+    var cancel = document.getElementsByClassName('cancel')
     export default {
         name: '',
         data() {
@@ -124,6 +129,7 @@
             colors:'',
             isReplay:false,
             isReplays:false,
+            isApproved:false
           }
         },
         methods: {
@@ -145,15 +151,19 @@
           },
           focus:function (i) {
             textareas[i].style.height = '100px'
+            cancel[i].style.display = 'block'
           },
           call:function (i) {
             textareas[i].style.height = '50px'
+            cancel[i].style.display = 'none'
           },
           maskOver:function (i) {
             masks[i].style.backgroundColor = 'rgba(0,0,0,0.3)'
+            this.isApproved = true
           },
           maskOut:function (i) {
             masks[i].style.backgroundColor = 'rgba(255,255,255,0)'
+            this.isApproved = false
           }
         },
         mounted () {
@@ -236,6 +246,9 @@
     margin-bottom: 20px;
     z-index: 5;
   }
+  .picture:hover .praise{
+    border: 4px solid #00DAE2;
+  }
   .picture-img {
     position: absolute;
     left: 0;
@@ -246,12 +259,47 @@
     position: absolute;
     width: 120px;
     height: 120px;
-    background-color: #0c7cd5;
+    border: 2px solid #00DAE2;
     border-radius: 50%;
     margin-top: -60px;
     margin-left: -60px;
     text-align: center;
-    line-height: 120px;
+  }
+  .praise>p {
+    line-height: 100px;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+  }
+  .praise>span{
+    display: inline-block;
+    position: absolute;
+    width: 80px;
+    top: 70px;
+    left: 20px;
+    color: white;
+    font-size: 14px;
+  }
+  .outer {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #00DAE2;
+    border-radius: 50%;
+    margin-top: -60px;
+    margin-left: -60px;
+    animation: animate 1.2s infinite;
+
+  }
+  @keyframes animate {
+    0%{
+      transform:scale(1);
+      opacity:1
+    }
+    100%{
+      transform: scale(1.5);
+      opacity: 0;
+    }
   }
   /*下方描述*/
   .describe {
@@ -378,6 +426,7 @@
     width: 490px;
     margin: auto;
     margin-top: 10px;
+    display: none;
   }
   .cancel>span:nth-child(1) {
     float: left;

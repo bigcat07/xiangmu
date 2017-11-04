@@ -12,7 +12,7 @@
         <div id="nav-title">
           <ul>
             <li>
-              <a href="index.html">首页</a>
+              <a href="index.html?id=1">首页</a>
             </li>
             <li>
               <a href="deep.html">深度</a>
@@ -25,7 +25,7 @@
             <!--</li>-->
           </ul>
           <div id="nav-search">
-            <input type="text" placeholder="请输入关键字搜索">
+            <input type="text" placeholder="请输入关键字搜索" @click="plut" ref="input">
             <a href="" id="bigglass">
               <img src="../../assets/big.png" alt="" width="22px" height="20px
 ">
@@ -170,17 +170,37 @@
       <button class="lrbtn">确认修改</button>
       <div class="close" @click="closemask">X</div>
     </div>
+    <!--锚点-->
+    <div id="up">
+      <a href="#">
+        <img src="../../assets/up.png" alt="">
+      </a>
+    </div>
+    <a href="search.html">点击</a>
   </div>
 
 </template>
 
 <script>
-    var headline = document.getElementsByClassName('headline')
+    var url = window.location.href.split('?')[1]
+    var tf = true;
+    if (window.history.length == 1) {
+      tf = true
+    }else {
+      if (url != undefined){
+        tf = true
+      }else {
+        tf = false
+      }
+    }
+
+
+
     export default {
         name: '',
         data () {
           return {
-            isShow : true,
+            isShow:tf,
             istablogin : false,
             istabregister:false,
             ismask : false,
@@ -191,11 +211,14 @@
               {name:'深度',iscur:false},
               {name:'下载APP',iscur:false}
             ],
+            isCC:tf,
             iscur:0,
             isApp:false
           }
         },
         methods:{
+          plut:function () {
+          },
 //          下载app
           reveal:function () {
             this.ismask = true
@@ -408,7 +431,7 @@
   #app {
     width: 570px;
     height: 570px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     margin-left: -235px;
     z-index: 80;
@@ -574,5 +597,16 @@
    border-radius: 4px;
    left: 360px;
    top: 175px;
+  }
+  #up {
+    width: 40px;
+    height: 40px;
+    background-color: #A3A6A6;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 6px;
+    position: fixed;
+    right: 20px;
+    bottom: 150px;
   }
 </style>

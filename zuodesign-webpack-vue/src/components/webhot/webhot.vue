@@ -30,7 +30,6 @@
               <img :src="box" alt="">
               全部
             </div>
-
           </li>
           <li v-for="(value,index) in typeArr"
               @mouseenter="over(index)" class="texttyple" @mouseleave="out(index)"
@@ -146,6 +145,7 @@
   #nav {
     margin-top: 20px;
     overflow: hidden;
+
   }
   #title {
     font-size: 14px;
@@ -191,10 +191,11 @@
     margin-left: 10px;
   }
   #downlist {
-    position: relative;
+    position: absolute;
     width: 120px;
     height: 500px;
     margin-top: -5px;
+    z-index: 10;
   }
   #up {
     position: absolute;
@@ -214,6 +215,7 @@
   #list {
     position: absolute;
     width: 100px;
+    height: 480px;
     border: 1px solid darkgray;
     top: 11px;
     border-radius: 4px;
