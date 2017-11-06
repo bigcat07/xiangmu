@@ -20,8 +20,8 @@
             </li>
           </ul>
           <div id="nav-search">
-            <input type="text" placeholder="请输入关键字搜索" @click="plut" ref="input">
-            <a href="" id="bigglass">
+            <input type="text" placeholder="请输入关键字搜索" @keyup.13="plut" v-model="input" ref="input">
+            <a id="bigglass" @click="sousuo">
               <img src="../../assets/big.png" alt="" width="22px" height="20px
 ">
             </a>
@@ -182,17 +182,21 @@
       tf = true
     }else {
       if (url != undefined){
-        tf = true
+        if (url.split('=')[0] == 'id') {
+          tf = true
+        }else {
+          tf = false
+        }
       }else {
         tf = false
       }
     }
 
-
     export default {
         name: '',
         data () {
           return {
+            input:'',
             isShow:tf,
             istablogin : false,
             istabregister:false,
@@ -205,11 +209,23 @@
             ],
             isCC:tf,
             iscur:0,
-            isApp:false
+            isApp:false,
           }
         },
         methods:{
           plut:function () {
+            if (this.$refs.input.value == '' || this.$refs.input.value == ' ') {
+              alert('请输入搜索内容')
+              return false
+            }
+            window.location.href = 'search.html?name='+this.input
+          },
+          sousuo:function () {
+            if (this.$refs.input.value == '' || this.$refs.input.value == ' ') {
+              alert('请输入搜索内容')
+              return false
+            }
+            window.location.href = 'search.html?name='+this.input
           },
 //          下载app
           reveal:function () {

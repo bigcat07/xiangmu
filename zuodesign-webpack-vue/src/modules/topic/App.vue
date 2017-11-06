@@ -16,11 +16,11 @@
 </template>
 
 <script>
-    import NavgationBar from '../../components/navgationBar/navgationBar.vue'
-    import MainContentII from '../../components/maincontent/mainContentII.vue'
-    import HotComments from '../../components/maincontent/hotComments.vue'
-    import Comments from '../../components/maincontent/comments.vue'
-    import Publish from '../../components/maincontent/publish'
+    import NavgationBar from '../../components/navgationBar/NavgationBar.vue'
+    import MainContentII from '../../components/maincontent/MainContentII.vue'
+    import HotComments from '../../components/maincontent/HotComments.vue'
+    import Comments from '../../components/maincontent/Comments.vue'
+    import Publish from '../../components/maincontent/Publish'
     import Foot from '../../components/footer/Foot.vue'
     export default {
         name: '',

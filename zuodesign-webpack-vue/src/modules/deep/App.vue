@@ -8,9 +8,9 @@
 </template>
 
 <script>
-  import NavgationBar from '../../components/navgationBar/navgationBar.vue'
-  import Deep from '../../components/deep/deep.vue'
-  import MoreArticles from '../../components/deep/moreArticles.vue'
+  import NavgationBar from '../../components/navgationBar/NavgationBar.vue'
+  import Deep from '../../components/deep/Deep.vue'
+  import MoreArticles from '../../components/deep/MoreArticles.vue'
   import Foot from '../../components/footer/Foot.vue'
 
     export default {

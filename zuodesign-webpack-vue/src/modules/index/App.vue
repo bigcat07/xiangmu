@@ -19,12 +19,12 @@
 
 <script>
   import MyIndex from '../../components/index/Index'
-  import NavgationBar from '../../components/navgationBar/navgationBar.vue'
-  import MainContent from '../../components/maincontent/mainContent.vue'
-  import HotRecommend from '../../components/hotrecommend/hotRecommend.vue'
-  import ReCommend from '../../components/recommend/reCommend.vue'
-  import WebHot from '../../components/webhot/webhot.vue'
-  import HotPosts from '../../components/hotPosts/hotPosts.vue'
+  import NavgationBar from '../../components/navgationBar/NavgationBar.vue'
+  import MainContent from '../../components/maincontent/MainContent.vue'
+  import HotRecommend from '../../components/hotrecommend/HotRecommend.vue'
+  import ReCommend from '../../components/recommend/ReCommend.vue'
+  import WebHot from '../../components/webhot/Webhot.vue'
+  import HotPosts from '../../components/hotPosts/HotPosts.vue'
   import Foot from '../../components/footer/Foot.vue'
   export default {
     name: 'index',
