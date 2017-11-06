@@ -11,18 +11,13 @@
         <!--中间内容-->
         <div id="nav-title">
           <ul>
-            <li>
-              <a href="index.html?id=1">首页</a>
+            <li v-for="(v,i) in titlearray">
+              <a :href="v.url" class="dh" @click="tabClass(i)">{{v.name}}</a>
             </li>
-            <li>
-              <a href="deep.html">深度</a>
-            </li>
+
             <li @click="reveal">
               <span style="color: #9DA0A4;font-size: 14px;cursor: pointer">下载APP</span>
             </li>
-            <!--<li v-for="(v,i) in titlearray">-->
-              <!--<a href="" @click="tiaozhuan(i)" class="headline">{{v.name}}</a>-->
-            <!--</li>-->
           </ul>
           <div id="nav-search">
             <input type="text" placeholder="请输入关键字搜索" @click="plut" ref="input">
@@ -176,7 +171,6 @@
         <img src="../../assets/up.png" alt="">
       </a>
     </div>
-    <a href="search.html">点击</a>
   </div>
 
 </template>
@@ -195,7 +189,6 @@
     }
 
 
-
     export default {
         name: '',
         data () {
@@ -207,9 +200,8 @@
             issecurity : false,
             isPassword : false,
             titlearray : [
-              {name:'首页',iscur:true},
-              {name:'深度',iscur:false},
-              {name:'下载APP',iscur:false}
+              {name:'首页',url:'index.html?id=1'},
+              {name:'深度',url:'deep.html'}
             ],
             isCC:tf,
             iscur:0,
